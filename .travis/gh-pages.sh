@@ -2,10 +2,10 @@
 
 # Add the content under docs/
 cd docs
-git checkout --orphan gh-pages
-git rm --cached -r -f ../
-git add ./*
+git init 
+git remote add origin git@github.com:Gyumeijie/code_snippets.CSS.git
+git add --all
 git commit -m "upadated at `date +"%Y-%m-%d %H:%M"`"
 
 # Make sure to make the output quiet, or else the API token will leak!
-git push -f git@github.com:Gyumeijie/code_snippets.CSS.git gh-pages
+git push -f origin master:gh-pages
