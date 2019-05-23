@@ -27,17 +27,8 @@ before_install:
 - git config --global user.email '18170879819@163.com'
 
 script:
-- git clone git@github.com:Gyumeijie/css.io.git
-- cp -r snippets css.io/ && cd css.io
-- npm install && npm run build
-- cp -r docs ../ && cd -
-- pwd && git status -s && ls -l docs
+- chmod +x .travis/build.sh && ./.travis/build.sh
 
 # Travis faild to deploy to github pages, so push manually
 after_success:
-- git checkout --orphan gh-pages
-- git rm --cached -r .
-- git add docs
-- git commit -m"update at `date +"%Y-%m-%d %H:%M`"
-# Make sure to make the output quiet, or else the API token will leak!
-- git push -f git@github.com:Gyumeijie/code_snippets.CSS.git gh-pages
+- chmod +x .travis/gh-pages.sh && ./.travis/gh-pages.sh
