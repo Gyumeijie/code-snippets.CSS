@@ -3,7 +3,7 @@
 # Add the content under docs/
 cd docs
 git init 
-git remote add origin git@github.com:Gyumeijie/code_snippets.CSS.git
+git remote add origin git@github.com:Gyumeijie/code-snippets.CSS.git
 git add --all
 git commit -m "upadated at `date +"%Y-%m-%d %H:%M"`"
 

@@ -4,31 +4,17 @@ node_js:
 install:
 - npm install
 script:
-- git clone git@github.com:Gyumeijie/css.io.git
-- cp -r snippets css.io/
-- cd css.io
-- npm install
-- npm run build
-- cd ..
-- cp -r css.io/docs .
+- chmod +x .travis/build.sh && ./.travis/build.sh
 after_script: 
 cache:
   directories:
   - node_modules
 before_install:
-- openssl aes-256-cbc -K $encrypted_6aef18dec71c_key -iv $encrypted_6aef18dec71c_iv
+- openssl aes-256-cbc -K $encrypted_890e64e2caf3_key -iv $encrypted_890e64e2caf3_iv
   -in .travis/id_rsa.travis.enc -out ~/.ssh/id_rsa -d
-# Configure file access permission
 - chmod 600 ~/.ssh/id_rsa
-# Configure ssh
 - cp .travis/ssh_config ~/.ssh/config
-# Congfigure git information
 - git config --global user.name 'Gyumeijie'
 - git config --global user.email '18170879819@163.com'
-
-script:
-- chmod +x .travis/build.sh && ./.travis/build.sh
-
-# Travis faild to deploy to github pages, so push manually
 after_success:
 - chmod +x .travis/gh-pages.sh && ./.travis/gh-pages.sh
